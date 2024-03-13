@@ -22,11 +22,11 @@ describe('simpleCalculator tests', () => {
     });
 
     test('should return null for invalid action', () => {
-        expect(simpleCalculator({a: 5, b: 2, action: ':'})).toBe(null);
+        expect(simpleCalculator({a: 5, b: 2, action: ':'})).toBeNull();
     });
 
     test('should return null for invalid arguments', () => {
-        expect(simpleCalculator({a: '5', b: 2, action: Action.Subtract})).toBe(null);
+        expect(simpleCalculator({a: '5', b: 2, action: Action.Subtract})).toBeNull() ;
     });
 });
 

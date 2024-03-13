@@ -12,7 +12,7 @@ type RawCalculatorInput = {
   action: unknown;
 };
 
-type ValidCalculatorInput = {
+export type ValidCalculatorInput = {
   a: number;
   b: number;
   action: Action;
@@ -23,7 +23,6 @@ export const simpleCalculator = (
 ): number | null => {
   if (isInputValid(rawInput)) {
     const { a, b, action } = rawInput;
-
     switch (action) {
       case Action.Add:
         return a + b;
