@@ -17,7 +17,7 @@ const testCases:TestCase[]  = [
 ];
 
 describe('simpleCalculatorTable', () => {
-   test.each(testCases)(`should return`,({ a, b, action, expected }) => {
+   test.each(testCases)(`should return `,({ a, b, action, expected }) => {
             expect(simpleCalculator({ a, b, action })).toBe(expected);
         });
 });
