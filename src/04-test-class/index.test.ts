@@ -1,67 +1,44 @@
 // Uncomment the code below and write your tests
-import {
-    // getBankAccount,
-    BankAccount, InsufficientFundsError, SynchronizationFailedError, TransferFailedError
-} from '.';
+// import { getBankAccount } from '.';
 
 describe('BankAccount', () => {
-    const balance = 100500
-    test('should create account with initial balance', () => {
-        const acc = new BankAccount(balance)
-        expect(acc.getBalance()).toBe(balance)
-    });
+  test('should create account with initial balance', () => {
+    // Write your test here
+  });
 
-    test('should throw InsufficientFundsError error when withdrawing more than balance', () => {
-        const acc = new BankAccount(balance)
-        expect(() => acc.withdraw(100505)).toThrow(InsufficientFundsError)
-    });
+  test('should throw InsufficientFundsError error when withdrawing more than balance', () => {
+    // Write your test here
+  });
 
-    test('should throw error when transferring more than balance', () => {
-        const acc = new BankAccount(balance)
-        const toAcc = new BankAccount(balance)
-        expect(() => acc.transfer(100505, toAcc)).toThrow(InsufficientFundsError)
-    });
+  test('should throw error when transferring more than balance', () => {
+    // Write your test here
+  });
 
-    test('should throw error when transferring to the same account', () => {
-        const acc = new BankAccount(balance)
-        expect(() => acc.transfer(100505, acc)).toThrow(TransferFailedError)    });
+  test('should throw error when transferring to the same account', () => {
+    // Write your test here
+  });
 
-    test('should deposit money', () => {
-        const acc = new BankAccount(balance)
-        expect( acc.deposit(balance).getBalance()).toEqual(balance * 2 )
-    });
+  test('should deposit money', () => {
+    // Write your test here
+  });
 
-    test('should withdraw money', () => {
-        const acc = new BankAccount(balance)
-        expect( acc.withdraw(100500).getBalance()).toEqual(0)
-    });
+  test('should withdraw money', () => {
+    // Write your test here
+  });
 
-    test('should transfer money', () => {
-        const acc = new BankAccount(balance)
-        const transferMany=100499
-        const accZero = new BankAccount(0)
-        expect( acc.transfer(transferMany,accZero).getBalance()).toEqual(1)
-        expect(accZero.getBalance()).toEqual(transferMany);
-    });
+  test('should transfer money', () => {
+    // Write your test here
+  });
 
-    test('fetchBalance should return number in case if request did not fail', async () => {
-        const acc = new BankAccount(100);
-        const balance = await acc.fetchBalance();
-        expect(balance).not.toBeNull();
-        expect(typeof balance).toBe('number');
-    });
+  test('fetchBalance should return number in case if request did not failed', async () => {
+    // Write your tests here
+  });
 
-    test('should set new balance if fetchBalance returned number', async () => {
-        const acc = new BankAccount(balance);
-        const updateBalance = await acc.fetchBalance();
-        expect(updateBalance).not.toBeNull();
-        expect(typeof balance).toBe('number');
-        expect(updateBalance).not.toBe(balance)
-    });
+  test('should set new balance if fetchBalance returned number', async () => {
+    // Write your tests here
+  });
 
-    test('should throw SynchronizationFailedError if fetchBalance returned null', async () => {
-        const acc = new BankAccount(balance);
-        acc.fetchBalance = jest.fn().mockResolvedValue(null);
-        await expect(acc.synchronizeBalance()).rejects.toThrow(SynchronizationFailedError);
-    });
+  test('should throw SynchronizationFailedError if fetchBalance returned null', async () => {
+    // Write your tests here
+  });
 });
