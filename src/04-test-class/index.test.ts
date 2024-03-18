@@ -53,6 +53,7 @@ describe('BankAccount', () => {
 
     test('should set new balance if fetchBalance returned number', async () => {
         const acc = new BankAccount(balance);
+        acc.fetchBalance = jest.fn().mockResolvedValue(50)
         const updateBalance = await acc.fetchBalance();
         expect(updateBalance).not.toBeNull();
         expect(typeof balance).toBe('number');
