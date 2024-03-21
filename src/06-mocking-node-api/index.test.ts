@@ -1,9 +1,10 @@
 // Uncomment the code below and write your tests
 import {
   doStuffByInterval,
-  // readFileAsynchronously,
+  readFileAsynchronously,
   doStuffByTimeout,
 } from '.';
+import path from 'node:path';
 
 describe('doStuffByTimeout', () => {
   beforeAll(() => {
@@ -50,14 +51,26 @@ describe('doStuffByInterval', () => {
   });
 
   test('should call callback multiple times after multiple intervals', () => {
-    // Write your test here
+    const callback = jest.fn();
+    doStuffByInterval(callback, 500)
+    expect(callback).not.toHaveBeenCalled();
+    jest.advanceTimersByTime(4000);
+    expect(callback).toHaveBeenCalledTimes(8)
   });
 });
 
 describe('readFileAsynchronously', () => {
+  const _path = 'wrong/path/for.test';
+
   test('should call join with pathToFile', async () => {
-    // Write your test here
+
+    const joinSpy = jest.spyOn(path, 'join');
+    await readFileAsynchronously(_path);
+
+    expect(joinSpy).toHaveBeenCalledWith(__dirname, _path);
   });
+
+
 
   test('should return null if file does not exist', async () => {
     // Write your test here
