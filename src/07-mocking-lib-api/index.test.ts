@@ -13,7 +13,15 @@ describe('throttledGetDataFromApi', () => {
     });
 
     test('should perform request to correct provided url', async () => {
-        // Write your test here
+        const createData = { baseURL: 'https://jsonplaceholder.typicode.com' };
+
+        const axiosInstance = axios.create(createData);
+        const axiosInstanceGetSpy = jest.spyOn(axiosInstance, 'get');
+        const axiosCreateSpy = jest.spyOn(axios, 'create');
+        axiosCreateSpy.mockReturnValue(axiosInstance);
+
+        await throttledGetDataFromApi('posts');
+        expect(axiosInstanceGetSpy).toHaveBeenCalledWith('posts');
     });
 
     test('should return response data', async () => {
