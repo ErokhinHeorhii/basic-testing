@@ -1,9 +1,7 @@
 // Uncomment the code below and write your tests
 import {
     throwError,
-    // throwCustomError,
-    resolveValue, throwCustomError, rejectCustomError,
-    // MyAwesomeError, rejectCustomError
+    resolveValue, throwCustomError, rejectCustomError, MyAwesomeError,
 } from './index';
 
 describe('resolveValue', () => {
@@ -24,13 +22,18 @@ describe('throwError', () => {
 });
 
 describe('throwCustomError', () => {
-    test('should throw custom error', () => {
-        expect(()=>throwCustomError()).toThrow('This is my awesome custom error!')
-    })
+    test('should throw custom error',() => {
+        try {
+            throwCustomError();
+        } catch (err) {
+            expect(err).toBeInstanceOf(MyAwesomeError);
+            expect((err as Error).message).toBe('This is my awesome custom error!');
+        }
+    });
 });
 
 describe('rejectCustomError', () => {
     test('should reject custom error', async () => {
-        return expect(rejectCustomError()).rejects.toThrow('This is my awesome custom error!');
+        await expect(rejectCustomError()).rejects.toThrow('This is my awesome custom error!');
     });
 });
